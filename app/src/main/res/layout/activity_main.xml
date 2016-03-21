@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="android.com.alexb.androidapp.MainActivity">
+    tools:context="com.jmasters.android.app.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button"
+        android:onClick="myButtonPressed1"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_marginTop="68dp"
