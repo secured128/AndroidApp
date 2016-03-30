@@ -1,4 +1,4 @@
-package android.com.alexb.androidapp;
+package com.jmasters.android.app.test;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
