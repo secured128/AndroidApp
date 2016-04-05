@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import com.jmasters.common.utils.StringUtils;
 import com.jmasters.common.finals.Constants;
 import com.jmasters.common.utils.DateUtils;
-import com.jmasters.common.utils.StringUtils;
 
 public class Audit implements Serializable {
 	private static final long serialVersionUID = 1L;

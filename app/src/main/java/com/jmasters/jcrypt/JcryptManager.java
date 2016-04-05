@@ -1,6 +1,4 @@
 package com.jmasters.jcrypt;
-import android.content.Context;
-import android.telephony.TelephonyManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,29 +16,29 @@ import javax.crypto.SecretKey;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import com.jmasters.common.utils.ConvertionUtils;
-import com.jmasters.common.utils.DateUtils;
 import com.jmasters.common.utils.NumberUtils;
 import com.jmasters.common.utils.StringUtils;
-import com.jmasters.common.utils.security.SymmetricEncryptionUtil;
-import com.jmasters.common.utils.security.SymmetricEncryptionUtil.ALGORITHM;
 import com.jmasters.jcrypt.common.Constants;
 import com.jmasters.jcrypt.common.JcryptEncriptionsV1;
 import com.jmasters.jcrypt.common.exceptions.JCRYPTDecryptionException;
 import com.jmasters.jcrypt.common.exceptions.JCRYPTEncryptionException;
 import com.jmasters.jcrypt.common.exceptions.JCRYPTException;
 import com.jmasters.jcrypt.common.model.MessagesConstants;
-import com.jmasters.jcrypt.model.Audit.DATA_SOURCE;
-import com.jmasters.jcrypt.model.ByteArrayModifyerInterface;
+import com.jmasters.jcrypt.model.Audit;
 import com.jmasters.jcrypt.model.DecryptedEncryptionParameter;
 import com.jmasters.jcrypt.model.DecryptedParameters;
 import com.jmasters.jcrypt.model.ENCRYPTION_ID_PARAMETRIZER;
-import com.jmasters.jcrypt.model.ENCRYPTION_SHEMA_VERSION;
 import com.jmasters.jcrypt.model.EncryptedParameters;
 import com.jmasters.jcrypt.model.Encryption;
 import com.jmasters.jcrypt.model.MIDIFYER;
 import com.jmasters.jcrypt.model.PARAMETRIZER;
 import com.jmasters.jcrypt.model.RandomEncryption;
+import com.jmasters.common.utils.ConvertionUtils;
+import com.jmasters.common.utils.DateUtils;
+import com.jmasters.common.utils.security.SymmetricEncryptionUtil;
+import com.jmasters.common.utils.security.SymmetricEncryptionUtil.ALGORITHM;
+import com.jmasters.jcrypt.model.ByteArrayModifyerInterface;
+import com.jmasters.jcrypt.model.ENCRYPTION_SHEMA_VERSION;
 
 /**
  * @author alexb
@@ -261,7 +259,7 @@ public class JcryptManager implements Constants {
 	public static String encrypt(long ownerID, long receiverID, Calendar expiryDate, String text)
 			throws JCRYPTEncryptionException {
 		try {
-			byte[] encryptedBytes = encrypt(ownerID, receiverID, expiryDate, text.getBytes("UTF-8"), DATA_SOURCE.TEXT);
+			byte[] encryptedBytes = encrypt(ownerID, receiverID, expiryDate, text.getBytes("UTF-8"), Audit.DATA_SOURCE.TEXT);
 			String encodedString = StringUtils.toBase64String(encryptedBytes);
 			return encodedString;
 		} catch (UnsupportedEncodingException e) {
@@ -275,11 +273,11 @@ public class JcryptManager implements Constants {
 
 	public static byte[] encrypt(long ownerId, long receiverID, Calendar expiryDate, byte[] byteArray)
 			throws JCRYPTEncryptionException {
-		return encrypt(ownerId, receiverID, expiryDate, byteArray, DATA_SOURCE.BINARY);
+		return encrypt(ownerId, receiverID, expiryDate, byteArray, Audit.DATA_SOURCE.BINARY);
 	}
 
 	private static byte[] encrypt(long ownerId, long receiverID, Calendar expiryDate, byte[] byteArray,
-			DATA_SOURCE dataSource) throws JCRYPTEncryptionException {
+			Audit.DATA_SOURCE dataSource) throws JCRYPTEncryptionException {
 
 //		logger.setLevel(Level.toLevel(PropertiesManager.PROPERTIES.ADMIN.getProperty(Constants.LOG4J_LEVEL)));
 //
@@ -350,7 +348,7 @@ public class JcryptManager implements Constants {
 		try {
 			text = StringUtils.removeWhiteSpaces(text);
 			byte[] decodedBytes = StringUtils.fromBase64String(text);
-			return new String(decrypt(userId, decodedBytes, DATA_SOURCE.TEXT), "UTF-8");
+			return new String(decrypt(userId, decodedBytes, Audit.DATA_SOURCE.TEXT), "UTF-8");
 		} catch (JCRYPTDecryptionException e) {
 			throw e;
 		} catch (Throwable e) {
@@ -359,7 +357,7 @@ public class JcryptManager implements Constants {
 	}
 
 	public static byte[] decrypt(long decryptorId, byte[] byteArray) throws JCRYPTDecryptionException {
-		return decrypt(decryptorId, byteArray, DATA_SOURCE.BINARY);
+		return decrypt(decryptorId, byteArray, Audit.DATA_SOURCE.BINARY);
 	}
 
 	/**
@@ -367,7 +365,7 @@ public class JcryptManager implements Constants {
 	 * @param decode
 	 * @return
 	 */
-	private static byte[] decrypt(long decryptorId, byte[] byteArray, DATA_SOURCE dataSource)
+	private static byte[] decrypt(long decryptorId, byte[] byteArray, Audit.DATA_SOURCE dataSource)
 			throws JCRYPTDecryptionException {
 
 //		logger.setLevel(Level.toLevel(PropertiesManager.PROPERTIES.ADMIN.getProperty(Constants.LOG4J_LEVEL)));

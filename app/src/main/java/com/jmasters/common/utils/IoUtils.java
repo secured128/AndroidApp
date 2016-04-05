@@ -3,15 +3,9 @@ package com.jmasters.common.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
 import java.nio.channels.FileChannel;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import com.jmasters.common.finals.Constants;
 

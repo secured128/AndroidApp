@@ -3,8 +3,8 @@ package com.jmasters.common.model;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.jmasters.common.utils.LogUtils;
 import com.jmasters.common.utils.StringUtils;
+import com.jmasters.common.utils.LogUtils;
 
 public class FSTreeNode extends TreeNode<FileInfo> {
 

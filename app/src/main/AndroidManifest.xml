@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jmasters.android.app">
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,8 +14,50 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" android:host="*" android:pathPattern=".*\\.jcrypt" android:scheme="http" />
+                <data android:pathPattern=".*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.jcrypt" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" android:host="*" android:scheme="https" />
+                <data android:pathPattern=".*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.jcrypt" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" android:host="*" android:scheme="content" />
+                <data android:pathPattern=".*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.jcrypt" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:mimeType="*/*" android:host="*" android:scheme="file" />
+                <data android:pathPattern=".*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.jcrypt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.jcrypt" />
+            </intent-filter>
         </activity>
-        <service android:name="com.jmasters.android.app.JcryptService" ></service>
+        <service android:name="com.jmasters.android.app.JcryptService" />
     </application>
 
 </manifest>
+

@@ -4,7 +4,6 @@ import java.util.ResourceBundle;
 
 import com.jmasters.common.utils.XMLResourceBundle;
 import com.jmasters.common.utils.XMLResourceBundleControl;
-import com.jmasters.jcrypt.common.Constants;
 import com.jmasters.jcrypt.common.model.Message;
 
 public class JCRYPTException extends Exception {

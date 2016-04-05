@@ -181,8 +181,7 @@ public class StringUtils {
 		}
 		int dataLength = (encodedString.length() * 3) / 4;
 		byte[] dataBytes = new byte[dataLength];
-		Base64 base64Decoder = new Base64();
-		dataBytes = base64Decoder.decode(encodedString);
+		dataBytes = Base64.decodeBase64(encodedString.getBytes("UTF-8"));
 		return dataBytes;
 	}
 
